@@ -2,7 +2,7 @@
 Description=Run bchydro.py every 5 minutes
 
 [Timer]
-OnBootSec=5min
+OnBootSec=0min
 OnUnitActiveSec=5min
 Persistent=true
 

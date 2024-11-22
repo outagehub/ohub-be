@@ -3,12 +3,12 @@ Description=Run bchydro.py every 5 minutes
 After=network.target
 
 [Service]
-Type=simple
+Type=oneshot
 ExecStart=/usr/bin/python3 /root/ohub/ohub-be/power_api/bc/bchydro.py
 WorkingDirectory=/root/ohub/ohub-be
 StandardOutput=append:/root/ohub/ohub-be/systemd/bchydro.log
 StandardError=append:/root/ohub/ohub-be/systemd/bchydro_error.log
-Restart=always
+RemainAfterExit=true
 
 [Install]
 WantedBy=multi-user.target

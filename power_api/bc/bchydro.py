@@ -19,6 +19,19 @@ HEADERS = {
     "Referer": "https://www.bchydro.com/power-outages/app/outage-map.html"
 }
 
+COMPANY_NAME = "BC Hydro"  # Define the company name
+
+def clear_company_data(company_name):
+    """Clear all entries in the database for the specified company."""
+    conn = sqlite3.connect(DB_FILE)
+    cursor = conn.cursor()
+
+    # Delete records for the specified company
+    cursor.execute("DELETE FROM outages WHERE company = ?", (company_name,))
+    conn.commit()
+    conn.close()
+    print(f"Cleared all records for {company_name}.")
+
 def fetch_outages():
     """Fetch outage data from BC Hydro API."""
     try:
@@ -32,7 +45,7 @@ def fetch_outages():
         print(f"Error fetching data: {e}")
         return []
 
-def store_outages(outages):
+def store_outages(outages, company_name):
     """Store fetched outage data in the SQLite database."""
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
@@ -42,8 +55,8 @@ def store_outages(outages):
             INSERT OR REPLACE INTO outages (
                 id, municipality, area, cause, numCustomersOut,
                 crewStatusDescription, latitude, longitude,
-                dateOff, crewEta, polygon
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                dateOff, crewEta, polygon, company
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             outage.get("id"),
             outage.get("municipality", "N/A"),
@@ -55,16 +68,20 @@ def store_outages(outages):
             outage.get("longitude", 0.0),
             outage.get("dateOff", "Unknown"),
             outage.get("crewEta", "Unknown"),
-            json.dumps(outage.get("polygon", []))
+            json.dumps(outage.get("polygon", [])),
+            COMPANY_NAME
         ))
 
     conn.commit()
     conn.close()
-    print(f"Inserted {len(outages)} outage records.")
+    print(f"Inserted {len(outages)} outage records for {company_name}.")
 
 if __name__ == "__main__":
+    # Clear the database for the specific company
+    clear_company_data(COMPANY_NAME)
+
+    # Fetch and store new data
     data = fetch_outages()
     if data:
-        store_outages(data)
-
+        store_outages(data, COMPANY_NAME)
 
