@@ -1,0 +1,15 @@
+[Unit]
+Description=Run quebechydro.py every 5 minutes
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/python3 /root/ohub/ohub-be/power_api/qc/quebechydro.py
+WorkingDirectory=/root/ohub/ohub-be
+StandardOutput=append:/root/ohub/ohub-be/systemd/quebechydro.log
+StandardError=append:/root/ohub/ohub-be/systemd/quebechydro_error.log
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target
+

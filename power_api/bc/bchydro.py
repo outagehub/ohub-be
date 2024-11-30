@@ -1,6 +1,7 @@
 import requests
 import sqlite3
 import json
+from datetime import datetime, timezone
 
 # Path to your SQLite database
 DB_FILE = "/root/ohub/ohub-db/ohub-db/outages_db"
@@ -50,13 +51,16 @@ def store_outages(outages, company_name):
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
 
+    # Get the current timestamp
+    api_call_timestamp = datetime.now(timezone.utc).isoformat()
+
     for outage in outages:
         cursor.execute("""
-            INSERT OR REPLACE INTO outages (
+            INSERT INTO outages (
                 id, municipality, area, cause, numCustomersOut,
                 crewStatusDescription, latitude, longitude,
-                dateOff, crewEta, polygon, company
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                dateOff, crewEta, polygon, company, apiCallTimestamp
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         """, (
             outage.get("id"),
             outage.get("municipality", "N/A"),
@@ -69,7 +73,8 @@ def store_outages(outages, company_name):
             outage.get("dateOff", "Unknown"),
             outage.get("crewEta", "Unknown"),
             json.dumps(outage.get("polygon", [])),
-            COMPANY_NAME
+            company_name,
+            api_call_timestamp  # Save the timestamp
         ))
 
     conn.commit()
@@ -78,7 +83,7 @@ def store_outages(outages, company_name):
 
 if __name__ == "__main__":
     # Clear the database for the specific company
-    clear_company_data(COMPANY_NAME)
+    # clear_company_data(COMPANY_NAME)
 
     # Fetch and store new data
     data = fetch_outages()
