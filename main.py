@@ -112,7 +112,6 @@ async def get_preloaded_outages():
         return JSONResponse({"error": "Outages cache is empty"}, status_code=500)
     return JSONResponse(outages_cache["data"])
 
-
 @app.get("/outages")
 async def get_outages(timestamp: str = None):
     """
@@ -123,26 +122,30 @@ async def get_outages(timestamp: str = None):
 
     try:
         if timestamp:
+            # Fetch the latest outage data for each power company up to the given timestamp
             query = """
                 SELECT id, municipality, area, cause, numCustomersOut, 
                        crewStatusDescription, latitude, longitude, 
                        dateOff, crewEta, polygon, company, planned,
                        apiCallTimestamp
                 FROM outages
-                WHERE apiCallTimestamp = (
+                WHERE apiCallTimestamp IN (
                     SELECT MAX(apiCallTimestamp)
                     FROM outages
                     WHERE apiCallTimestamp <= ?
+                    GROUP BY company
                 )
             """
             rows = cursor.execute(query, (timestamp,)).fetchall()
         else:
+            # Fetch the latest outage data for each power company
             query = """
                 SELECT id, municipality, area, cause, numCustomersOut, 
                        crewStatusDescription, latitude, longitude, 
                        dateOff, crewEta, polygon, company, planned,
                        apiCallTimestamp
-                FROM outages WHERE apiCallTimestamp IN (
+                FROM outages
+                WHERE apiCallTimestamp IN (
                     SELECT MAX(apiCallTimestamp)
                     FROM outages
                     GROUP BY company
@@ -150,6 +153,7 @@ async def get_outages(timestamp: str = None):
             """
             rows = cursor.execute(query).fetchall()
 
+        # Process the rows into a JSON-compatible structure
         outages = [
             {
                 "id": row[0],
