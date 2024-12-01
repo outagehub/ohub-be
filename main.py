@@ -74,7 +74,7 @@ async def update_outages_cache():
             print("Outages cache updated")
         except Exception as e:
             print(f"Error updating outages cache: {e}")
-        await asyncio.sleep(600)  # Refresh every 10 minutes
+        await asyncio.sleep(300)  # Refresh every 5 minutes
 
 
 @app.on_event("startup")
