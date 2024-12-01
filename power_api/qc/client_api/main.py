@@ -1,17 +1,15 @@
 import os
 import secrets
-import sqlite3
 import json
-from datetime import datetime
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.security.api_key import APIKeyHeader
-import logging
+from math import radians, sin, cos, sqrt, atan2
 
 # FastAPI instance
 app = FastAPI(title="Quebec Hydro Outages API", version="1.0")
 
-# Path to your SQLite database
-DB_FILE = "/root/ohub/ohub-db/ohub-db/outages_db"
+# Path to your JSON file
+CACHE_FILE = "/root/ohub/ohub-be/outages_cache.json"
 
 # API Key Configuration
 API_KEY_NAME = "X-API-KEY"
@@ -44,66 +42,102 @@ def verify_api_key(api_key: str):
     if api_key != VALID_API_KEY:
         raise HTTPException(status_code=403, detail="Invalid API key")
 
-# Database Query Helper Function
-def query_latest_outages():
-    """Query the outages database and retrieve the latest records for Quebec Hydro."""
-    if not os.path.exists(DB_FILE):
-        raise HTTPException(status_code=500, detail="Database file not found.")
-
-    conn = sqlite3.connect(DB_FILE)
-    conn.row_factory = sqlite3.Row  # Allows fetching rows as dictionaries
-    cursor = conn.cursor()
+# Read and filter outages from JSON cache
+def query_latest_outages_from_cache():
+    """Fetch Quebec Hydro outages from the JSON cache."""
+    if not os.path.exists(CACHE_FILE):
+        raise HTTPException(status_code=500, detail="Cache file not found.")
 
     try:
-        # Fetch the latest timestamp for Quebec Hydro entries
-        cursor.execute("""
-            SELECT MAX(apiCallTimestamp) as latest_timestamp  FROM outages 
-            WHERE company = 'Quebec Hydro'
-        """)
-        latest_timestamp = cursor.fetchone()["latest_timestamp"]
+        with open(CACHE_FILE, "r") as f:
+            data = json.load(f)
 
-        if not latest_timestamp:
-            return []  # No records found for Quebec Hydro
+        # Filter outages for Quebec Hydro
+        quebec_hydro_outages = [outage for outage in data if outage.get("power_company") == "Quebec Hydro"]
 
-        # Query the database for entries with the latest timestamp for Quebec Hydro
-        cursor.execute("""
-            SELECT * FROM outages 
-            WHERE company = 'Quebec Hydro' 
-            AND apiCallTimestamp = ?
-        """, (latest_timestamp,))
-        rows = cursor.fetchall()
+        return quebec_hydro_outages
+    except json.JSONDecodeError as e:
+        raise HTTPException(status_code=500, detail=f"Failed to decode cache file: {str(e)}")
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error reading cache file: {str(e)}")
 
-        # Convert rows to a list of dictionaries
-        outages = [dict(row) for row in rows]
-
-        # Deserialize the polygon field (stored as JSON in the database)
-        for outage in outages:
-            if 'polygon' in outage and outage['polygon']:
-                outage['polygon'] = json.loads(outage['polygon'])
-
-        return outages
-    except sqlite3.Error as e:
-        raise HTTPException(status_code=500, detail=f"Database query failed: {str(e)}")
-    finally:
-        conn.close()
-
-# GET endpoint to retrieve latest outage data
 @app.get("/hydro-outages", summary="Retrieve Latest Quebec Hydro Outage Data")
 async def get_hydro_outages(api_key: str = Depends(api_key_header)):
     # Verify API key
     verify_api_key(api_key)
     print("API key verified successfully.")
 
+    cache_file_path = "/root/ohub/ohub-be/outages_cache.json"
+
     try:
-        # Fetch the latest outage data
-        outages = query_latest_outages()
-        print(f"Fetched {len(outages)} records for Quebec Hydro.")
-        return {"outages": outages, "total_outages": len(outages)}
+        # Open and parse the cache file
+        with open(cache_file_path, "r") as f:
+            cache_data = json.load(f)  # Properly parse JSON
+        
+        # Access the "data" key
+        all_outages = cache_data.get("data", [])
+        print(f"Loaded {len(all_outages)} records from cache.")
+
+        # Filter for Quebec Hydro outages
+        hydro_outages = [
+            outage for outage in all_outages
+            if outage["power_company"] == "Quebec Hydro"
+        ]
+
+        print(f"Returning {len(hydro_outages)} Quebec Hydro outages.")
+        return {"outages": hydro_outages, "total_outages": len(hydro_outages)}
+    
     except Exception as e:
-        print("Error occurred:", str(e))
+        print(f"Error occurred while processing /hydro-outages endpoint: {e}")
+        raise HTTPException(status_code=500, detail="Internal server error.")
+
+def haversine(lat1, lon1, lat2, lon2):
+    """
+    Calculate the great-circle distance in kilometers between two points on Earth.
+    """
+    R = 6371  # Radius of Earth in kilometers
+    dlat = radians(lat2 - lat1)
+    dlon = radians(lon2 - lon1)
+    a = sin(dlat / 2) ** 2 + cos(radians(lat1)) * cos(radians(lat2)) * sin(dlon / 2) ** 2
+    c = 2 * atan2(sqrt(a), sqrt(1 - a))
+    return R * c
+
+@app.get("/outages-nearby", summary="Check if there are outages near a location")
+async def check_outages_nearby(lat: float, lon: float, distance_km: float, api_key: str = Depends(api_key_header)):
+    """
+    Check if there are outages within a specified distance from the given latitude and longitude.
+    Returns True if there is at least one outage within the distance, otherwise False.
+    """
+    # Verify API key
+    verify_api_key(api_key)
+    print("API key verified successfully.")
+
+    cache_file_path = "/root/ohub/ohub-be/outages_cache.json"
+
+    try:
+        # Open and parse the cache file
+        with open(cache_file_path, "r") as f:
+            cache_data = json.load(f)  # Parse the JSON cache
+        
+        # Access the "data" key
+        all_outages = cache_data.get("data", [])
+        print(f"Loaded {len(all_outages)} records from cache.")
+
+        # Check if any outage is within the specified distance
+        is_nearby = any(
+            haversine(lat, lon, outage["latitude"], outage["longitude"]) <= distance_km
+            for outage in all_outages
+        )
+
+        print(f"Outages nearby: {is_nearby}")
+        return {"nearby_outage": is_nearby}
+
+    except Exception as e:
+        print(f"Error occurred while processing /outages-nearby endpoint: {e}")
         raise HTTPException(status_code=500, detail="Internal server error.")
 
 # Root endpoint for testing
 @app.get("/")
 async def root():
-    return {"message": "Welcome to the Quebec Hydro Outages API. Use /hydro-outages with your API key."} 
+    return {"message": "Welcome to the Quebec Hydro Outages API. Use /hydro-outages with your API key."}
+

@@ -3,6 +3,7 @@ from fastapi.responses import FileResponse, JSONResponse
 import sqlite3
 import json
 import asyncio
+import os
 
 app = FastAPI()
 
@@ -11,10 +12,22 @@ INDEX_HTML = "/root/ohub/ohub-fe/index.html"
 CSS_FILE = "/root/ohub/ohub-fe/styles.css"
 JS_FILE = "/root/ohub/ohub-fe/script.js"
 DB_PATH = "/root/ohub/ohub-db/ohub-db/outages_db"
+CACHE_FILE_PATH = "/root/ohub/ohub-be/outages_cache.json"
 
 # Global cache for preloaded outages
 outages_cache = {"data": [], "last_updated": None}
 
+def save_cache_to_file(cache_data):
+    """
+    Save the cache data to a file in JSON format.
+    """
+    try:
+        os.makedirs(os.path.dirname(CACHE_FILE_PATH), exist_ok=True)  # Ensure the directory exists
+        with open(CACHE_FILE_PATH, "w") as cache_file:
+            json.dump(cache_data, cache_file, indent=4)
+        print(f"Cache saved to file: {CACHE_FILE_PATH}")
+    except Exception as e:
+        print(f"Error saving cache to file: {e}")
 
 def fetch_outages_from_db():
     """
@@ -65,13 +78,16 @@ def fetch_outages_from_db():
 
 async def update_outages_cache():
     """
-    Update the global outages cache periodically.
+    Update the global outages cache periodically and save it to a file.
     """
     while True:
         try:
             outages_cache["data"] = fetch_outages_from_db()
             outages_cache["last_updated"] = asyncio.get_event_loop().time()
             print("Outages cache updated")
+            
+            # Save the cache to a file
+            save_cache_to_file(outages_cache)
         except Exception as e:
             print(f"Error updating outages cache: {e}")
         await asyncio.sleep(300)  # Refresh every 5 minutes
@@ -102,6 +118,11 @@ async def serve_js():
     """Serve the JavaScript file."""
     return FileResponse(JS_FILE)
 
+@app.get("/feedback")
+async def serve_feedback():
+    """Serve the feedback HTML file."""
+    feedback_file = "/root/ohub/ohub-fe/feedback.html"  # Adjust path if needed
+    return FileResponse(feedback_file)
 
 @app.get("/preloaded-outages")
 async def get_preloaded_outages():
