@@ -3,6 +3,7 @@ import secrets
 import json
 from fastapi import FastAPI, HTTPException, Depends
 from fastapi.security.api_key import APIKeyHeader
+from fastapi import Query, HTTPException
 from math import radians, sin, cos, sqrt, atan2
 
 # FastAPI instance
@@ -103,7 +104,13 @@ def haversine(lat1, lon1, lat2, lon2):
     return R * c
 
 @app.get("/outages-nearby", summary="Check if there are outages near a location")
-async def check_outages_nearby(lat: float, lon: float, distance_km: float, api_key: str = Depends(api_key_header)):
+async def check_outages_nearby(
+    lat: float = Query(..., alias="lat"),
+    lon: float = Query(None, alias="lon"),
+    long: float = Query(None, alias="long"),
+    distance_km: float = Query(..., alias="distance_km"),
+    api_key: str = Depends(api_key_header)
+):
     """
     Check if there are outages within a specified distance from the given latitude and longitude.
     Returns True if there is at least one outage within the distance, otherwise False.
@@ -112,13 +119,19 @@ async def check_outages_nearby(lat: float, lon: float, distance_km: float, api_k
     verify_api_key(api_key)
     print("API key verified successfully.")
 
+    # Handle both 'lon' and 'long'
+    if lon is None and long is not None:
+        lon = long
+    elif lon is None and long is None:
+        raise HTTPException(status_code=400, detail="Either 'lon' or 'long' must be provided for longitude.")
+
     cache_file_path = "/root/ohub/ohub-be/outages_cache.json"
 
     try:
         # Open and parse the cache file
         with open(cache_file_path, "r") as f:
             cache_data = json.load(f)  # Parse the JSON cache
-        
+
         # Access the "data" key
         all_outages = cache_data.get("data", [])
         print(f"Loaded {len(all_outages)} records from cache.")

@@ -203,3 +203,12 @@ async def get_outages(timestamp: str = None):
     finally:
         conn.close()
 
+@app.get("/weather-alerts")
+async def get_weather_alerts():
+    """
+    Serve the matched weather alerts with polygons from the JSON file.
+    """
+    alerts_file_path = "/root/ohub/ohub-be/weather_api/matched_weather_alerts_with_polygons.json"
+    if os.path.exists(alerts_file_path):
+        return FileResponse(alerts_file_path)
+    return JSONResponse({"error": "File not found"}, status_code=404)
