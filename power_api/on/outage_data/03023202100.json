@@ -1,0 +1,38 @@
+{
+    "file_title": "03023202100",
+    "file_data": [
+        {
+            "id": "11-0",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Crew Working in Area",
+                    "fr-CA": "Travaux en cours dans la r\u00e9gion",
+                    "orig": "W"
+                },
+                "cluster": false,
+                "etr": "ETR-EXP",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Planned work to repair/replace equipment",
+                    "fr-CA": "Travaux pr\u00e9vus de r\u00e9paration et de remplacement de l\u2019\u00e9quipement",
+                    "orig": "PLANN43"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "_|ykGfqf{M"
+                ]
+            }
+        }
+    ]
+}

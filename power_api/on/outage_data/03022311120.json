@@ -1,0 +1,39 @@
+{
+    "file_title": "03022311120",
+    "file_data": [
+        {
+            "id": "11-0",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Crew Working in Area",
+                    "fr-CA": "Travaux en cours dans la r\u00e9gion",
+                    "orig": "C"
+                },
+                "cluster": false,
+                "etr": "ETR-EXP",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Currently Under Investigation",
+                    "ES-ES": "En cours d'investigation",
+                    "fr-CA": "En cours d'investigation",
+                    "orig": "HUMAN92_6"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "shipGdggcN"
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,30 @@
+{
+    "file_title": "030223112",
+    "file_data": [
+        {
+            "id": "9-0",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 2,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": null,
+                "cluster": true,
+                "etr": "ETR-EXP",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": null,
+                "crew_icon": false,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "ok~nGxbfdN"
+                ]
+            }
+        }
+    ]
+}

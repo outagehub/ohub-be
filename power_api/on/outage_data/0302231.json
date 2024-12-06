@@ -1,0 +1,292 @@
+{
+    "file_title": "0302231",
+    "file_data": [
+        {
+            "id": "7-0",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 2,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": null,
+                "cluster": true,
+                "etr": "ETR-EXP",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": null,
+                "crew_icon": false,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "ok~nGxbfdN"
+                ]
+            }
+        },
+        {
+            "id": "7-1",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 42,
+                "cust_a": {
+                    "val": 1395
+                },
+                "inc_id": null,
+                "crew_status": null,
+                "cluster": true,
+                "etr": "2024-12-31T21:00:00Z",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": null,
+                "crew_icon": false,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "cthqGtkreN"
+                ]
+            }
+        },
+        {
+            "id": "7-2",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 2,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": null,
+                "cluster": true,
+                "etr": "2024-12-05T21:00:00Z",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": null,
+                "crew_icon": false,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "ampoG`fvfN"
+                ]
+            }
+        },
+        {
+            "id": "7-3",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 7,
+                "cust_a": {
+                    "val": 274
+                },
+                "inc_id": null,
+                "crew_status": null,
+                "cluster": true,
+                "etr": "2024-12-19T22:00:00Z",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": null,
+                "crew_icon": false,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "gicqGbuubN"
+                ]
+            }
+        },
+        {
+            "id": "7-4",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Crew Working in Area",
+                    "fr-CA": "Travaux en cours dans la r\u00e9gion",
+                    "orig": "W"
+                },
+                "cluster": false,
+                "etr": "ETR-EXP",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Motor Vehicle Accident",
+                    "ES-ES": "Accident de la route",
+                    "fr-CA": "Accident de la route",
+                    "orig": "HUMAN91_1"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "cjyfGhshhN"
+                ]
+            }
+        },
+        {
+            "id": "7-5",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Dispatched",
+                    "fr-CA": "En route",
+                    "orig": "G"
+                },
+                "cluster": false,
+                "etr": "ETR-EXP",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Pending Classification",
+                    "fr-CA": "En voie de classification"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "uwvfG~t~iN"
+                ]
+            }
+        },
+        {
+            "id": "7-6",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Crew Working in Area",
+                    "fr-CA": "Travaux en cours dans la r\u00e9gion",
+                    "orig": "W"
+                },
+                "cluster": false,
+                "etr": "ETR-EXP",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Installing new equipment",
+                    "fr-CA": "Installation de nouvel \u00e9quipement",
+                    "orig": "PLANN41"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "y_ifGx`wkN"
+                ]
+            }
+        },
+        {
+            "id": "7-7",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 2,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": null,
+                "cluster": true,
+                "etr": "ETR-EXP",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": null,
+                "crew_icon": false,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "w`sjGbleiN"
+                ]
+            }
+        },
+        {
+            "id": "7-8",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Under Investigation",
+                    "fr-CA": "En cours d'investigation",
+                    "orig": "U"
+                },
+                "cluster": false,
+                "etr": "2024-12-05T21:15:00Z",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Pending Classification",
+                    "fr-CA": "En voie de classification"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "svqnGfyfiN"
+                ]
+            }
+        },
+        {
+            "id": "7-9",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Crew Working in Area",
+                    "fr-CA": "Travaux en cours dans la r\u00e9gion",
+                    "orig": "W"
+                },
+                "cluster": false,
+                "etr": "ETR-EXP",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Planned work to repair/replace equipment",
+                    "fr-CA": "Travaux pr\u00e9vus de r\u00e9paration et de remplacement de l\u2019\u00e9quipement",
+                    "orig": "PLANN43"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "edwkG`qbgN"
+                ]
+            }
+        }
+    ]
+}

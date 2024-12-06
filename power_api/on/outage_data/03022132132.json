@@ -1,0 +1,96 @@
+{
+    "file_title": "03022132132",
+    "file_data": [
+        {
+            "id": "11-0",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 2,
+                "cust_a": {
+                    "val": 44
+                },
+                "inc_id": null,
+                "crew_status": null,
+                "cluster": true,
+                "etr": "ETR-NULL",
+                "etr_confidence": null,
+                "outages": [
+                    {
+                        "crew_status": {
+                            "EN-US": "Under Investigation",
+                            "fr-CA": "En cours d'investigation",
+                            "orig": "U"
+                        },
+                        "cust_a": {
+                            "val": 43
+                        },
+                        "crew_icon": true,
+                        "etr": "ETR-NULL",
+                        "cause": {
+                            "EN-US": "Pending Classification",
+                            "fr-CA": "En voie de classification"
+                        }
+                    },
+                    {
+                        "crew_status": {
+                            "EN-US": "Under Investigation",
+                            "fr-CA": "En cours d'investigation",
+                            "orig": "A"
+                        },
+                        "cust_a": {
+                            "val": 19,
+                            "mask": 20
+                        },
+                        "crew_icon": true,
+                        "etr": "ETR-NULL",
+                        "cause": {
+                            "EN-US": "Pending Classification",
+                            "fr-CA": "En voie de classification"
+                        }
+                    }
+                ],
+                "comments": null,
+                "cause": null,
+                "crew_icon": false,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "mmluGlg~iN"
+                ]
+            }
+        },
+        {
+            "id": "11-1",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Crew Working in Area",
+                    "fr-CA": "Travaux en cours dans la r\u00e9gion",
+                    "orig": "W"
+                },
+                "cluster": false,
+                "etr": "ETR-EXP",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Pending Classification",
+                    "fr-CA": "En voie de classification"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "uqhuGt`tiN"
+                ]
+            }
+        }
+    ]
+}

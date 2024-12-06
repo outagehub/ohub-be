@@ -1,0 +1,39 @@
+{
+    "file_title": "03022312331",
+    "file_data": [
+        {
+            "id": "11-0",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Crew Working in Area",
+                    "fr-CA": "Travaux en cours dans la r\u00e9gion",
+                    "orig": "W"
+                },
+                "cluster": false,
+                "etr": "ETR-EXP",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Motor Vehicle Accident",
+                    "ES-ES": "Accident de la route",
+                    "fr-CA": "Accident de la route",
+                    "orig": "HUMAN91_1"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "cjyfGhshhN"
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "file_title": "030221332031312",
+    "file_data": [
+        {
+            "id": "15-0",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Restoration is pending safe personnel or equipment access.",
+                    "fr-CA": "Service sera r\u00e9tabli quand l'acc\u00e8s ou les travaux seront s\u00e9curitaires",
+                    "orig": "P"
+                },
+                "cluster": false,
+                "etr": "2024-12-05T23:00:00Z",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Tree on Line",
+                    "ES-ES": "Arbre tomb\u00e9 sur une ligne",
+                    "fr-CA": "Arbre tomb\u00e9 sur une ligne",
+                    "orig": "TREES40_9"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "a": [
+                    "cwdtG|defNcJgHkGkMnRrV"
+                ],
+                "p": [
+                    "kaetG~ydfN"
+                ]
+            }
+        }
+    ]
+}

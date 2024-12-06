@@ -1,0 +1,29 @@
+{
+    "file_title": "03023",
+    "file_data": [
+        {
+            "id": "5-0",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 4,
+                "cust_a": {
+                    "val": 145
+                },
+                "inc_id": null,
+                "crew_status": null,
+                "cluster": true,
+                "etr": "2024-12-05T21:30:00Z",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": null,
+                "crew_icon": false,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "ukfmGvdr{M"
+                ]
+            }
+        }
+    ]
+}

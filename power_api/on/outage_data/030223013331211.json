@@ -1,0 +1,39 @@
+{
+    "file_title": "030223013331211",
+    "file_data": [
+        {
+            "id": "15-0",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Under Investigation",
+                    "fr-CA": "En cours d'investigation",
+                    "orig": "U"
+                },
+                "cluster": false,
+                "etr": "ETR-EXP",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Replacing Cross Arm",
+                    "ES-ES": "Remplacement d'une traverse",
+                    "fr-CA": "Remplacement d'une traverse",
+                    "orig": "PLANN23"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "g}slGbrbqN"
+                ]
+            }
+        }
+    ]
+}

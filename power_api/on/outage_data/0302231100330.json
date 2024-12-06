@@ -1,0 +1,39 @@
+{
+    "file_title": "0302231100330",
+    "file_data": [
+        {
+            "id": "13-0",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 89
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Dispatched",
+                    "fr-CA": "En route",
+                    "orig": "D"
+                },
+                "cluster": false,
+                "etr": "2024-12-06T01:00:00Z",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Pending Classification",
+                    "fr-CA": "En voie de classification"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "a": [
+                    "c~{pGzkqfNoqB|wCyaA`{@ad@ssBhNifGlDgp@nj@s`@byCxxF"
+                ],
+                "p": [
+                    "uc`qGf|pfN"
+                ]
+            }
+        }
+    ]
+}

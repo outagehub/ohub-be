@@ -1,0 +1,38 @@
+{
+    "file_title": "0302200020301",
+    "file_data": [
+        {
+            "id": "13-0",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Crew Working in Area",
+                    "fr-CA": "Travaux en cours dans la r\u00e9gion",
+                    "orig": "W"
+                },
+                "cluster": false,
+                "etr": "2024-12-05T21:00:00Z",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Planned Broadband/Joint Use Work",
+                    "fr-CA": "Travaux planifi\u00e9s sur le haut d\u00e9bit/utilisation conjointe",
+                    "orig": "PLANN42"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "ar}eHnlxbP"
+                ]
+            }
+        }
+    ]
+}

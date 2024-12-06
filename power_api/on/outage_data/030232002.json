@@ -1,0 +1,70 @@
+{
+    "file_title": "030232002",
+    "file_data": [
+        {
+            "id": "9-0",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 139
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Crew Working in Area",
+                    "fr-CA": "Travaux en cours dans la r\u00e9gion",
+                    "orig": "W"
+                },
+                "cluster": false,
+                "etr": "ETR-EXP",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Upgrading System",
+                    "ES-ES": "Mise \u00e0 niveau du r\u00e9seau",
+                    "fr-CA": "Mise \u00e0 niveau du r\u00e9seau",
+                    "orig": "PLANN07"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "eqmmGvjd}M"
+                ]
+            }
+        },
+        {
+            "id": "9-1",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Dispatched",
+                    "fr-CA": "En route",
+                    "orig": "G"
+                },
+                "cluster": false,
+                "etr": "ETR-EXP",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Pending Classification",
+                    "fr-CA": "En voie de classification"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "wb}nG~st{M"
+                ]
+            }
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+{
+    "file_title": "030",
+    "file_data": [
+        {
+            "id": "3-0",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 122,
+                "cust_a": {
+                    "val": 3421
+                },
+                "inc_id": null,
+                "crew_status": null,
+                "cluster": true,
+                "etr": "2024-12-31T21:00:00Z",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": null,
+                "crew_icon": false,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "yugrGlwqfN"
+                ]
+            }
+        },
+        {
+            "id": "3-1",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 2,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": null,
+                "cluster": true,
+                "etr": "2024-12-05T21:00:00Z",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": null,
+                "crew_icon": false,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "}iagHx}bbP"
+                ]
+            }
+        }
+    ]
+}

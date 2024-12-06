@@ -1,0 +1,68 @@
+{
+    "file_title": "0302213321212",
+    "file_data": [
+        {
+            "id": "13-0",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 19,
+                    "mask": 20
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Under Investigation",
+                    "fr-CA": "En cours d'investigation",
+                    "orig": "U"
+                },
+                "cluster": false,
+                "etr": "ETR-NULL",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Pending Classification",
+                    "fr-CA": "En voie de classification"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "kzftGpvjeN"
+                ]
+            }
+        },
+        {
+            "id": "13-1",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 21
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Dispatched",
+                    "fr-CA": "En route",
+                    "orig": "D"
+                },
+                "cluster": false,
+                "etr": "2024-12-06T04:00:00Z",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Pending Classification",
+                    "fr-CA": "En voie de classification"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "p": [
+                    "uubtGh_neN"
+                ]
+            }
+        }
+    ]
+}

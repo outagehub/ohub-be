@@ -1,0 +1,39 @@
+{
+    "file_title": "0302213323001",
+    "file_data": [
+        {
+            "id": "13-0",
+            "title": "Area Outage",
+            "desc": {
+                "n_out": 1,
+                "cust_a": {
+                    "val": 82
+                },
+                "inc_id": null,
+                "crew_status": {
+                    "EN-US": "Damage has been assessed and a crew will be dispatched to your area as soon as possible",
+                    "fr-CA": "Les dommages ont \u00e9t\u00e9 \u00e9valu\u00e9s et un \u00e9quipage sera envoy\u00e9 dans votre r\u00e9gion d\u00e8s que possible",
+                    "orig": "L"
+                },
+                "cluster": false,
+                "etr": "ETR-EXP",
+                "etr_confidence": null,
+                "comments": null,
+                "cause": {
+                    "EN-US": "Pending Classification",
+                    "fr-CA": "En voie de classification"
+                },
+                "crew_icon": true,
+                "start_time": null
+            },
+            "geom": {
+                "a": [
+                    "__tsG~cveNSz`@_j@juAkNoNnFolBt@uCjDmHpf@aFzC|X"
+                ],
+                "p": [
+                    "i~tsGniweN"
+                ]
+            }
+        }
+    ]
+}
